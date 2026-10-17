@@ -6,9 +6,21 @@ import { Button } from "@/components/ui/button";
 import { getFishList } from "@/lib/fish-api";
 
 const perks = [
-  { icon: Waves, title: "Caught fresh", text: "Sourced every morning from trusted local fishermen." },
-  { icon: Snowflake, title: "Cleaned & chilled", text: "Cut, cleaned and packed on ice, ready to cook." },
-  { icon: Truck, title: "Quick delivery", text: "Order on WhatsApp and get it at your door." },
+  {
+    icon: Waves,
+    title: "Caught fresh",
+    text: "Sourced every morning from trusted local fishermen.",
+  },
+  {
+    icon: Snowflake,
+    title: "Cleaned & chilled",
+    text: "Cut, cleaned and packed on ice, ready to cook.",
+  },
+  {
+    icon: Truck,
+    title: "Quick delivery",
+    text: "Order on WhatsApp and get it at your door.",
+  },
 ];
 
 export default async function HomePage() {
@@ -35,7 +47,8 @@ export default async function HomePage() {
           </span>
         </h1>
         <p className="mx-auto mt-6 max-w-xl text-base leading-7 text-slate-600 sm:text-lg">
-          ताजेपणाचा शाही अनुभव. Browse today&apos;s fresh catch and order directly for price, availability and delivery.
+          ताजेपणाचा शाही अनुभव. Browse today&apos;s fresh catch and order
+          directly for price, availability and delivery.
         </p>
         <div className="mt-10 flex flex-wrap justify-center gap-3">
           <Button asChild size="lg" className="rounded-full">
@@ -66,13 +79,20 @@ export default async function HomePage() {
 
       <section className="pt-24">
         <div className="mb-8 flex items-end justify-between">
-          <h2 className="text-3xl font-semibold tracking-tight">Today&apos;s selection</h2>
-          <Link href="/products" className="text-sm text-primary hover:underline">
+          <h2 className="text-3xl font-semibold tracking-tight">
+            Today&apos;s selection
+          </h2>
+          <Link
+            href="/products"
+            className="text-sm text-primary hover:underline"
+          >
             See all
           </Link>
         </div>
         {featured.length === 0 ? (
-          <p className="text-sm text-slate-600">No products available right now. Please check back soon.</p>
+          <p className="text-sm text-slate-600">
+            No products available right now. Please check back soon.
+          </p>
         ) : (
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {featured.map((f) => (
