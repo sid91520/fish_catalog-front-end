@@ -27,8 +27,12 @@ function toLocalInputValue(d: Date) {
   return copy.toISOString().slice(0, 16);
 }
 
-function todayEnd() {
+/** How far ahead customers can book a delivery. */
+const MAX_ADVANCE_DAYS = 7;
+
+function lastBookableTime() {
   const d = new Date();
+  d.setDate(d.getDate() + MAX_ADVANCE_DAYS);
   d.setHours(23, 59, 0, 0);
   return d;
 }
@@ -94,7 +98,7 @@ export function EnquiryDialog({ fish }: { fish: Fish }) {
               <DialogTitle>Order {fish.name}</DialogTitle>
             </DialogHeader>
             <p className="-mt-2 flex items-center gap-1.5 text-sm font-medium text-primary">
-              <Truck className="size-4" /> Ordered today, delivered today
+              <Truck className="size-4" /> Order ahead, delivered fresh on your chosen day
             </p>
             <form ref={formRef} action={handleSubmit} className="space-y-4">
               <input type="hidden" name="productId" value={fish.id} />
@@ -124,13 +128,13 @@ export function EnquiryDialog({ fish }: { fish: Fish }) {
                 <p className="text-xs text-slate-500">We&apos;ll use it to send updates about your booking.</p>
               </div>
               <div className="space-y-2">
-                <Label htmlFor={`lead-time-${fish.id}`}>Delivery Time (today)</Label>
+                <Label htmlFor={`lead-time-${fish.id}`}>Delivery Date &amp; Time</Label>
                 <Input
                   id={`lead-time-${fish.id}`}
                   name="deliveryTime"
                   type="datetime-local"
                   min={toLocalInputValue(new Date())}
-                  max={toLocalInputValue(todayEnd())}
+                  max={toLocalInputValue(lastBookableTime())}
                   required
                 />
               </div>

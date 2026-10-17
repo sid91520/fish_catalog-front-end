@@ -9,7 +9,8 @@
     "lint": "next lint",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
-    "prisma:studio": "prisma studio"
+    "prisma:studio": "prisma studio",
+    "prepare": "husky || true"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^6.16.0",
@@ -45,6 +46,7 @@
     "@types/react-dom": "^19.1.9",
     "eslint": "^9.35.0",
     "eslint-config-next": "^15.5.0",
+    "husky": "^9.1.7",
     "prisma": "^6.16.0",
     "tailwindcss": "^4.1.13",
     "typescript": "^5.9.2"
